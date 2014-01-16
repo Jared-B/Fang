@@ -8,7 +8,7 @@
 #include <sys/time.h>
 
 #include "dxl_hal.h"
-
+#define LATENCY_TIME	(16)
 int	gSocket_fd	= -1;
 long	glStartTime	= 0;
 float	gfRcvWaitTime	= 0.0f;
@@ -153,7 +153,7 @@ static inline long myclock()
 void dxl_hal_set_timeout( int NumRcvByte )
 {
 	glStartTime = myclock();
-	gfRcvWaitTime = (float)(gfByteTransTime*(float)NumRcvByte + 5.0f);
+	gfRcvWaitTime = (float)(gfByteTransTime*(float)NumRcvByte + 2*LATENCY_TIME + 2.0f);
 }
 
 int dxl_hal_timeout(void)
