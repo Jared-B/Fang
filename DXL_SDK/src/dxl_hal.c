@@ -33,7 +33,7 @@ int dxl_hal_open(int deviceIndex, float baudrate)
 		goto DXL_HAL_OPEN_ERROR;
 	}
 
-	newtio.c_cflag		= B38400|CS8|CLOCAL|CREAD;
+	newtio.c_cflag		= B1000000|CS8|CLOCAL|CREAD;
 	newtio.c_iflag		= IGNPAR;
 	newtio.c_oflag		= 0;
 	newtio.c_lflag		= 0;
@@ -46,6 +46,7 @@ int dxl_hal_open(int deviceIndex, float baudrate)
 	if(gSocket_fd == -1)
 		return 0;
 	
+	/*
 	if(ioctl(gSocket_fd, TIOCGSERIAL, &serinfo) < 0) {
 		fprintf(stderr, "Cannot get serial info\n");
 		return 0;
@@ -58,7 +59,7 @@ int dxl_hal_open(int deviceIndex, float baudrate)
 	if(ioctl(gSocket_fd, TIOCSSERIAL, &serinfo) < 0) {
 		fprintf(stderr, "Cannot set serial info\n");
 		return 0;
-	}
+	}*/
 	
 	dxl_hal_close();
 	
@@ -73,7 +74,7 @@ int dxl_hal_open(int deviceIndex, float baudrate)
 		goto DXL_HAL_OPEN_ERROR;
 	}
 
-	newtio.c_cflag		= B38400|CS8|CLOCAL|CREAD;
+	newtio.c_cflag		= B1000000|CS8|CLOCAL|CREAD;
 	newtio.c_iflag		= IGNPAR;
 	newtio.c_oflag		= 0;
 	newtio.c_lflag		= 0;
@@ -104,6 +105,7 @@ int dxl_hal_set_baud( float baudrate )
 	if(gSocket_fd == -1)
 		return 0;
 	
+	/*
 	if(ioctl(gSocket_fd, TIOCGSERIAL, &serinfo) < 0) {
 		fprintf(stderr, "Cannot get serial info\n");
 		return 0;
@@ -117,7 +119,7 @@ int dxl_hal_set_baud( float baudrate )
 		fprintf(stderr, "Cannot set serial info\n");
 		return 0;
 	}
-	
+	*/
 	//dxl_hal_close();
 	//dxl_hal_open(gDeviceName, baudrate);
 	
