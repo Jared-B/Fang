@@ -36,7 +36,7 @@ class Leg;
 BioloidController bioloid = BioloidController(1000000);
 boolean doIK(Leg * a);
 void walk(Leg a[]);
-
+void writeServos(Leg * a);
 class Leg {
 public:
 	uint8 coxa_id_, femur_id_, tibia_id_, flip_, x_flip_, y_flip_;
@@ -65,8 +65,8 @@ public:
 		return false;*/
 		doIK(this);
 		/*if(!(checkBounds(this)))
-		return false;
-		writeServos(this);*/
+		return false;*/
+		writeServos(this);
 		return true;
 	}
 };
@@ -100,7 +100,11 @@ boolean doIK(Leg * a) {
   return true;
 }
 
-
+void writeServos(Leg * a) {
+  SetPosition(a->coxa_id_,(int)a->coxa);
+  SetPosition(a->femur_id_,(int)a->femur);
+  SetPosition(a->tibia_id_,(int)a->tibia);
+}
 
 void walk(Leg a[]) {
 	for(int j = 0; j < 4; j++) {
