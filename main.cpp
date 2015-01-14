@@ -19,7 +19,7 @@ const short int kStepHeight = 20;
 const short int kStepTime = 2000;
 const short int kStepResetTime = 6000;
 const short int kStepTimeOffset [4] = {0,4000,0,4000};
-const float kWalkAngle = 0;
+const float kWalkAngle = 00;
 
 //
 // [FL]    X    [FR]
